@@ -1,77 +1,143 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IkBenNietKwijtIkBenFreddy</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 40px;
-            background-color: #f5f5f5;
-            color: #333;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IkBenNietKwijtIkBenFreddy</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-        h1 {
-            color: #222;
-            margin-bottom: 20px;
-        }
+    /* 🐾 Achtergrond met pootjes */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3a/Paw-print.svg');
+      background-size: 80px;
+      background-repeat: repeat;
+      opacity: 0.07;
+      z-index: 0;
+      pointer-events: none;
+      animation: movePaws 40s linear infinite;
+    }
 
-        img {
-            max-width: 80%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin: 20px 0;
-        }
+    @keyframes movePaws {
+      from { background-position: 0 0; }
+      to { background-position: 300px 300px; }
+    }
 
-        .content {
-            max-width: 700px;
-            margin: auto;
-            background: #fff;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            line-height: 1.6;
-        }
+    .wrapper {
+      max-width: 850px;
+      margin: 30px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      backdrop-filter: blur(6px);
+      transform: perspective(1000px) rotateX(1deg);
+      animation: fadeIn 1.2s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
 
-        .insta-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 18px;
-            background: #e1306c;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
+    h2 {
+      color: #444;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
+    }
 
-        .insta-link:hover {
-            background: #c1275a;
-        }
-    </style>
+    img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      margin: 25px 0;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    p {
+      line-height: 1.7;
+      font-size: 1.1rem;
+      color: #555;
+      margin: 15px 0;
+    }
+
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 25px;
+      padding: 12px 22px;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      background-size: 300% 300%;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 3s ease;
+    }
+
+    .insta-link:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+      background-position: right center;
+    }
+
+    .insta-link img {
+      width: 22px;
+      height: 22px;
+      filter: brightness(0) invert(1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
+  <div class="wrapper">
     <img src="IMG_0984.jpeg" alt="FreddyTheCat">
 
-    <div class="content">
-        <h2>Welkom op Freddy’s Avonturenpagina!</h2>
-        <p>Hallo daar! Mijn naam is Freddy, en ik ben een avontuurlijke kat die graag de buurt verkent. 
-        Geen zorgen, ik ben niet weggelopen! Ik hou gewoon van avontuur en het ontdekken van nieuwe plekjes.</p>
+    <h2>Welkom op Freddy’s Avonturenpagina! 🐾</h2>
 
-        <p>Als je me hebt gevonden en je je afvraagt of ik veilig ben: ja, ik ben helemaal oké! 
-        Ik woon hier in de buurt en ga vanzelf weer naar huis als ik klaar ben met mijn ontdekkingstocht.</p>
+    <p>Hallo daar! Mijn naam is Freddy, en ik ben een avontuurlijke kat die graag de buurt verkent. 
+    Geen zorgen, ik ben niet weggelopen! Ik hou gewoon van avontuur en het ontdekken van nieuwe plekjes.</p>
 
-        <p>Bedankt dat je even op me hebt gelet. 
-        Heb je vragen of wil je iets laten weten aan mijn baasjes? Klik dan hieronder om contact op te nemen.</p>
+    <p>Als je me hebt gevonden en je je afvraagt of ik veilig ben: ja, ik ben helemaal oké! 
+    Ik woon hier in de buurt en ga vanzelf weer naar huis als ik klaar ben met mijn ontdekkingstocht.</p>
 
-        <p>🐾 Veel avontuurlijke groetjes,<br>Freddy</p>
+    <p>Bedankt dat je even op me hebt gelet. 
+    Heb je vragen of wil je iets laten weten aan mijn baasjes? Klik dan hieronder om contact op te nemen.</p>
 
-        <a class="insta-link" href="https://instagram.com/freddydepoes" target="_blank">Volg mij op Instagram</a>
-    </div>
+    <p>Veel avontuurlijke groetjes,<br><strong>Freddy 🐱</strong></p>
+
+    <a class="insta-link" href="https://instagram.com/freddydepoes" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Cat_silhouette.svg" alt="Cat Icon">
+      Volg mij op Instagram
+    </a>
+  </div>
 </body>
 </html>
-
-
