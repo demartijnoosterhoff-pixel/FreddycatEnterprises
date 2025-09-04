@@ -20,7 +20,6 @@
       overflow-x: hidden;
     }
 
-    /* 🐾 Achtergrond met pootjes */
     body::before {
       content: "";
       position: absolute;
@@ -82,14 +81,12 @@
       margin: 15px 0;
     }
 
-    .insta-link {
+    .insta-link, #seenBtn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       margin-top: 25px;
       padding: 12px 22px;
-      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-      background-size: 300% 300%;
       color: white;
       text-decoration: none;
       border-radius: 50px;
@@ -97,6 +94,12 @@
       font-size: 1.1rem;
       box-shadow: 0 6px 15px rgba(0,0,0,0.25);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 3s ease;
+      cursor: pointer;
+    }
+
+    .insta-link {
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      background-size: 300% 300%;
     }
 
     .insta-link:hover {
@@ -105,10 +108,13 @@
       background-position: right center;
     }
 
-    .insta-link svg {
-      width: 22px;
-      height: 22px;
-      fill: white;
+    #seenBtn {
+      background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    }
+
+    #seenBtn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
     }
 
     .hashtag {
@@ -125,7 +131,7 @@
 </head>
 <body>
   <div class="wrapper">
-    <img src="IMG_0984.jpeg" alt="FreddyTheCat">
+    <img src="IMG_0984.jpeg" alt="Freddy, een avontuurlijke kat met rugzakje">
 
     <h2>Welkom op Freddy’s Avonturenpagina! 🐾</h2>
 
@@ -147,10 +153,49 @@
       </svg>
       Volg mij op Instagram
     </a>
+
+    <!-- Tekst boven de knop -->
+    <p style="margin-top: 20px; font-weight: bold; color: #444; font-size: 1.1rem;">
+      Heb je mij gezien? druk dan op de knop om mijn avonturen te tracken 🐾
+    </p>
+
+    <!-- Freddy gezien knop -->
+    <button id="seenBtn">Ik heb Freddy gezien! 📍</button>
+    <p id="locationMsg"></p>
+
     <div class="hashtag">📷 Gebruik ook #FreddyDePoes</div>
   </div>
+
+  <script>
+  const button = document.getElementById('seenBtn');
+  const locationMsg = document.getElementById('locationMsg');
+
+  // Google Form URL en veld-ID’s
+  const formActionURL = "https://docs.google.com/forms/d/e/JE_FORM_ID/formResponse";
+  const latField = "entry.1234567890";   // Vervang door jouw veld-ID
+  const lngField = "entry.0987654321";   // Vervang door jouw veld-ID
+
+  button.addEventListener('click', () => {
+    if (!navigator.geolocation) {
+      locationMsg.textContent = "Helaas, jouw browser ondersteunt geen locatie.";
+      return;
+    }
+
+    locationMsg.textContent = "Bedankt! Freddy is gemeld 🐾";
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+
+        // Verstuur naar Google Forms zonder dat de gebruiker iets ziet
+        const formURL = `${formActionURL}?${latField}=${latitude}&${lngField}=${longitude}`;
+        fetch(formURL, { method: "POST", mode: "no-cors" });
+      },
+      (error) => {
+        locationMsg.textContent = "Kon de locatie niet ophalen. Probeer het opnieuw.";
+      }
+    );
+  });
+  </script>
 </body>
 </html>
-
-
-
