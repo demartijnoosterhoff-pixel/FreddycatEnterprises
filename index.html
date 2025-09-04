@@ -19,7 +19,6 @@
       position: relative;
       overflow-x: hidden;
     }
-
     body::before {
       content: "";
       position: absolute;
@@ -33,12 +32,7 @@
       pointer-events: none;
       animation: movePaws 40s linear infinite;
     }
-
-    @keyframes movePaws {
-      from { background-position: 0 0; }
-      to { background-position: 300px 300px; }
-    }
-
+    @keyframes movePaws { from { background-position: 0 0; } to { background-position: 300px 300px; } }
     .wrapper {
       max-width: 850px;
       margin: 30px;
@@ -52,14 +46,7 @@
       position: relative;
       z-index: 1;
     }
-
-    h2 {
-      color: #444;
-      margin-bottom: 20px;
-      font-size: 2rem;
-      text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
-    }
-
+    h2 { color: #444; margin-bottom: 20px; font-size: 2rem; text-shadow: 1px 2px 4px rgba(0,0,0,0.15); }
     img {
       max-width: 80%;
       height: auto;
@@ -68,108 +55,36 @@
       margin: 25px 0;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
-
-    img:hover {
-      transform: scale(1.05) rotate(-1deg);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-    }
-
-    p {
-      line-height: 1.7;
-      font-size: 1.1rem;
-      color: #555;
-      margin: 15px 0;
-    }
-
-    /* Knoppen wrapper */
-    .button-wrapper {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 25px;
-      flex-wrap: wrap; /* zorgt dat ze mobiel onder elkaar kunnen */
-    }
-
-    /* Beide knoppen dezelfde basisstijl */
+    img:hover { transform: scale(1.05) rotate(-1deg); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+    p { line-height: 1.7; font-size: 1.1rem; color: #555; margin: 15px 0; }
+    .button-wrapper { display: flex; justify-content: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
     .insta-link, #seenBtn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 22px;
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 12px 22px; color: white; text-decoration: none; border-radius: 50px;
+      font-weight: bold; font-size: 1.1rem; box-shadow: 0 6px 15px rgba(0,0,0,0.25);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 3s ease;
-      cursor: pointer;
-      border: none;
-      min-height: 48px;
+      cursor: pointer; border: none; min-height: 48px;
     }
-
-    .insta-link {
-      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-      background-size: 300% 300%;
-    }
-
-    .insta-link:hover, #seenBtn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
-      background-position: right center;
-    }
-
-    #seenBtn {
-      background: linear-gradient(45deg, #ff7e5f, #feb47b);
-    }
-
-    .hashtag {
-      margin-top: 8px;
-      font-size: 0.95rem;
-      color: #444;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .insta-link { background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); background-size: 300% 300%; }
+    .insta-link:hover, #seenBtn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.35); background-position: right center; }
+    #seenBtn { background: linear-gradient(45deg, #ff7e5f, #feb47b); }
+    .hashtag { margin-top: 8px; font-size: 0.95rem; color: #444; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <img src="IMG_0984.jpeg" alt="Freddy, een avontuurlijke kat met rugzakje">
-
     <h2>Welkom op Freddy’s Avonturenpagina! 🐾</h2>
-
-    <p>Hallo daar! Mijn naam is Freddy, en ik ben een avontuurlijke kat die graag de buurt verkent. 
-    Geen zorgen, ik ben niet weggelopen! Ik hou gewoon van avontuur en het ontdekken van nieuwe plekjes.</p>
-
-    <p>Ik draag een speciaal rugzakje, deze bevat een handige tracker 🎒📡. 
-    Daardoor weten mijn baasjes altijd precies waar ik ben, onnodig de dierenambulance bellen voor mij is nu dus niet meer nodig 🤩</p>
-
-    <p>Wil je meer van mijn avonturen zien? 📸  
-    Volg me dan op Instagram én tag me gerust in je eigen foto’s, dat vind ík superleuk!</p>
-
+    <p>Hallo daar! Mijn naam is Freddy, en ik ben een avontuurlijke kat die graag de buurt verkent. Geen zorgen, ik ben niet weggelopen! Ik hou gewoon van avontuur en het ontdekken van nieuwe plekjes.</p>
+    <p>Ik draag een speciaal rugzakje, deze bevat een handige tracker 🎒📡. Daardoor weten mijn baasjes altijd precies waar ik ben, onnodig de dierenambulance bellen voor mij is nu dus niet meer nodig 🤩</p>
+    <p>Wil je meer van mijn avonturen zien? 📸 Volg me dan op Instagram én tag me gerust in je eigen foto’s, dat vind ík superleuk!</p>
     <p>Veel avontuurlijke groetjes,<br><strong>Freddy 🐱</strong></p>
-
-    <!-- Knoppen naast elkaar -->
     <div class="button-wrapper">
-      <a class="insta-link" href="https://instagram.com/freddydepoes" target="_blank">
-        Volg mij op Instagram
-      </a>
+      <a class="insta-link" href="https://instagram.com/freddydepoes" target="_blank">Volg mij op Instagram</a>
       <button id="seenBtn">Ik heb Freddy gezien! 📍</button>
     </div>
-
-    <!-- Verborgen Google Form -->
-    <form id="freddyForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfktbVpO5BfMBsAzrBaTTCvBHenlzVpH1DVk48nDxHf19v5vQ/formResponse" method="POST" target="hidden_iframe">
-      <input type="hidden" name="entry.2015287359" id="latInput">
-      <input type="hidden" name="entry.601943170" id="lngInput">
-    </form>
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
-
     <p id="locationMsg"></p>
-
     <div class="hashtag">📷 Gebruik ook #FreddyDePoes</div>
   </div>
 
@@ -177,26 +92,47 @@
     const button = document.getElementById('seenBtn');
     const locationMsg = document.getElementById('locationMsg');
 
+    const BIN_ID = "68b95226ae596e708fe20c55";        // vervang dit door je eigen bin ID
+    const API_KEY = "$2a$10$SrN.Qag9BVWgdJC4S40b9.4d9EHefTGB.GNvSXomhoUdOBmV743/u";      // vervang dit door je eigen master key
+
+    async function addSpot(lat, lng) {
+      try {
+        // 1. Haal huidige spots op
+        const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+          headers: { "X-Master-Key": API_KEY }
+        });
+        const data = await res.json();
+        const spots = data.record.spots || [];
+
+        // 2. Voeg nieuwe spot toe
+        spots.push({ lat, lng, timestamp: new Date().toISOString() });
+
+        // 3. Update de bin
+        await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Master-Key": API_KEY
+          },
+          body: JSON.stringify({ spots })
+        });
+
+        locationMsg.textContent = "Bedankt! Freddy is gemeld 🐾";
+      } catch (err) {
+        locationMsg.textContent = "Er ging iets mis bij het melden.";
+        console.error(err);
+      }
+    }
+
     button.addEventListener('click', () => {
       if (!navigator.geolocation) {
         locationMsg.textContent = "Helaas, jouw browser ondersteunt geen locatie.";
         return;
       }
 
-      locationMsg.textContent = "Bedankt! Freddy is gemeld 🐾";
-
       navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-
-          document.getElementById('latInput').value = latitude;
-          document.getElementById('lngInput').value = longitude;
-
-          document.getElementById('freddyForm').submit();
-        },
-        (error) => {
-          locationMsg.textContent = "Kon de locatie niet ophalen. Probeer het opnieuw.";
-        }
+        (pos) => addSpot(pos.coords.latitude, pos.coords.longitude),
+        () => locationMsg.textContent = "Kon de locatie niet ophalen. Probeer het opnieuw."
       );
     });
   </script>
