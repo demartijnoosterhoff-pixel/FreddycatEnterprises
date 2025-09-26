@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCP Tool</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .wrapper {
+      max-width: 700px;
+      width: 90%;
+      padding: 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label { display: block; margin-top: 10px; }
+    input { width: 100%; padding: 8px; margin-top: 5px; }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ff7f50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover { background: #ff6333; }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+    a { display:block; margin-top:20px; text-align:center; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h2>TCP Tool</h2>
+    <label>X: <input type="number" id="x" value="90"></label>
+    <label>Y: <input type="number" id="y" value="153"></label>
+    <label>Z: <input type="number" id="z" value="220"></label>
+    <label>RX (°): <input type="number" id="rx" value="180"></label>
+    <label>RY (°): <input type="number" id="ry" value="45"></label>
+    <label>RZ (°): <input type="number" id="rz" value="60"></label>
+    <label>ΔL (mm): <input type="number" id="delta" value="30"></label>
+    <button onclick="bereken()">Bereken nieuwe TCP</button>
+    <pre id="output"></pre>
+    <a href="index.html">⬅ Terug naar Freddy</a>
+  </div>
+
+<script>
+function deg2rad(d) { return d * Math.PI / 180; }
+
+function rotMatrix(rx, ry, rz) {
+  let cx = Math.cos(deg2rad(rx)), sx = Math.sin(deg2rad(rx));
+  let cy = Math.cos(deg2rad(ry)), sy = Math.sin(deg2rad(ry));
+  let cz = Math.cos(deg2rad(rz)), sz = Math.sin(deg2rad(rz));
+
+  let Rx = [[1,0,0],[0,cx,-sx],[0,sx,cx]];
+  let Ry = [[cy,0,sy],[0,1,0],[-sy,0,cy]];
+  let Rz = [[cz,-sz,0],[sz,cz,0],[0,0,1]];
+
+  // matrix multiply Rz*Ry*Rx
+  return multiply(Rz, multiply(Ry, Rx));
+}
+
+function multiply(A,B) {
+  let C = Array.from({length:A.length}, ()=>Array(B[0].length).fill(0));
+  for(let i=0;i<A.length;i++)
+    for(let j=0;j<B[0].length;j++)
+      for(let k=0;k<B.length;k++)
+        C[i][j]+=A[i][k]*B[k][j];
+  return C;
+}
+
+function bereken() {
+  let x = parseFloat(document.getElementById('x').value);
+  let y = parseFloat(document.getElementById('y').value);
+  let z = parseFloat(document.getElementById('z').value);
+  let rx = parseFloat(document.getElementById('rx').value);
+  let ry = parseFloat(document.getElementById('ry').value);
+  let rz = parseFloat(document.getElementById('rz').value);
+  let delta = parseFloat(document.getElementById('delta').value);
+
+  let R = rotMatrix(rx,ry,rz);
+
+  // offset langs tool-Z (positief = verder, negatief = korter)
+  let off_tool = [0,0,delta];
+  let off_base = [
+    R[0][0]*off_tool[0] + R[0][1]*off_tool[1] + R[0][2]*off_tool[2],
+    R[1][0]*off_tool[0] + R[1][1]*off_tool[1] + R[1][2]*off_tool[2],
+    R[2][0]*off_tool[0] + R[2][1]*off_tool[1] + R[2][2]*off_tool[2]
+  ];
+
+  let nx = x + off_base[0];
+  let ny = y + off_base[1];
+  let nz = z + off_base[2];
+
+  document.getElementById('output').textContent =
+    `Nieuwe TCP:\nX=${nx.toFixed(2)}\nY=${ny.toFixed(2)}\nZ=${nz.toFixed(2)}\nRX=${rx}\nRY=${ry}\nRZ=${rz}`;
+}
+</script>
+</body>
+</html>
